@@ -4,6 +4,7 @@ import (
 	"bank/util"
 	"context"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/require"
 )
@@ -31,4 +32,16 @@ func createRandomAccount(t *testing.T) Account {
 
 func TestCreateAccount(t *testing.T) {
 	createRandomAccount(t)
+}
+
+func TestGetAccount(t *testing.T) {
+	sut := createRandomAccount(t)
+	account2, err := testQueries.GetAccount(context.Background(), sut.ID)
+	require.NoError(t, err)
+	require.NotEmpty(t, account2)
+
+	require.Equal(t, sut.Owner, account2.Owner)
+	require.Equal(t, sut.Balance, account2.Balance)
+	require.Equal(t, sut.Currency, account2.Currency)
+	require.WithinDuration(t, sut.CreatedAt, account2.CreatedAt, time.Second)
 }
