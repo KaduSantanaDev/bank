@@ -1,17 +1,18 @@
 package db
 
 import (
+	"bank/util"
 	"context"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 )
 
-func TestCreateAccount(t *testing.T) {
+func createRandomAccount(t *testing.T) Account {
 	arg := CreateAccountParams{
-		Owner:    "Tom",
-		Balance:  100,
-		Currency: "USD",
+		Owner:    util.RandomOwner(),
+		Balance:  util.RandomMoney(),
+		Currency: util.RandomCurrency(),
 	}
 
 	account, err := testQueries.CreateAccount(context.Background(), arg)
@@ -24,4 +25,10 @@ func TestCreateAccount(t *testing.T) {
 
 	require.NotZero(t, account.ID)
 	require.NotZero(t, account.CreatedAt)
+
+	return account
+}
+
+func TestCreateAccount(t *testing.T) {
+	createRandomAccount(t)
 }
