@@ -25,4 +25,4 @@ RETURNING *;
 
 -- name: DeleteAccount :exec
 DELETE FROM account
-WHERE id = $1
+WHERE id = $1;
