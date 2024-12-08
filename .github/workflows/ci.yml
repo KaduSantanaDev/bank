@@ -46,7 +46,9 @@ jobs:
         which migrate
 
     - name: Run migrations
-      run: make migrateup
+      run: |
+        make migrateup
+        ls
 
     - name: Test
       run: make test
