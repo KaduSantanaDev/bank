@@ -8,7 +8,7 @@ dropdb:
 	docker exec -it postgres12 dropdb bank
 
 migrateup:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose up
+	migrate -path /home/kadu/bank/db/migration -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose up
 
 migratedown:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose down
