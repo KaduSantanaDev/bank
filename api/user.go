@@ -4,6 +4,7 @@ import (
 	db "bank/db/sqlc"
 	"bank/util"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lib/pq"
@@ -14,6 +15,14 @@ type createUserRequest struct {
 	Password string `json:"password" binding:"required,min=6"`
 	FullName string `json:"full_name" binding:"required"`
 	Email    string `json:"email" binding:"required,email"`
+}
+
+type createUserResponse struct {
+	Username          string    `json:"username"`
+	FullName          string    `json:"full_name"`
+	Email             string    `json:"email"`
+	PasswordChangedAt time.Time `json:"password_changed_at"`
+	CreatedAt         time.Time `json:"created_at"`
 }
 
 func (server *Server) createUser(ctx *gin.Context) {
@@ -50,6 +59,14 @@ func (server *Server) createUser(ctx *gin.Context) {
 		}
 	}
 
-	ctx.JSON(http.StatusCreated, newUser)
+	response := createUserResponse{
+		Username:          newUser.Username,
+		FullName:          newUser.FullName,
+		Email:             newUser.Email,
+		CreatedAt:         newUser.CreatedAt,
+		PasswordChangedAt: newUser.PasswordChangedAt,
+	}
+
+	ctx.JSON(http.StatusCreated, response)
 
 }
