@@ -3,6 +3,7 @@ package api
 import (
 	db "bank/db/sqlc"
 	"bank/util"
+	"errors"
 	"net/http"
 	"time"
 
@@ -50,7 +51,8 @@ func (server *Server) createUser(ctx *gin.Context) {
 	newUser, err := server.store.CreateUser(ctx, arg)
 
 	if err != nil {
-		if pqErr, ok := err.(*pq.Error); ok {
+		var pqErr *pq.Error
+		if errors.As(err, &pqErr) {
 			switch pqErr.Code.Name() {
 			case "unique_violation":
 				ctx.JSON(http.StatusForbidden, errorResponse(err))
