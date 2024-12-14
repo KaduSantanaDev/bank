@@ -48,7 +48,7 @@ jobs:
     - name: Run migrations
       run: |
         ls
-        make migrateup
+        make localmigrateup
 
     - name: Test
       run: make test
