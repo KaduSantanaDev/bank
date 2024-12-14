@@ -20,10 +20,10 @@ migratedown:
 	migrate -path db/migration -database "${CONN_STRING}" -verbose down
 
 localmigratedown:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose down
+	migrate -path db/migration -database "${LOCAL_CONN_STRING}" -verbose down
 
 localmigrateup:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose up
+	migrate -path db/migration -database "${LOCAL_CONN_STRING}" -verbose up
 
 sqlc:
 	sqlc generate

@@ -45,7 +45,7 @@ jobs:
           sudo mv migrate /usr/bin/migrate
 
       - name: Run local migrations
-        run: make localmigrateup
+        run: migrate -path db/migration -database "${{ secrets.LOCAL_CONN_STRING }}" -verbose up
 
       - name: Run tests
         run: make test
