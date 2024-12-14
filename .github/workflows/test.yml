@@ -38,7 +38,7 @@ jobs:
 
       - name: Set up environment variables
         run: |
-          cp .env.example .env
+          cp .env .env
           echo "LOCAL_DB_SOURCE=postgresql://root:secret@localhost:5432/bank?sslmode=disable" >> .env
           cat .env
 
