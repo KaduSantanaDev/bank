@@ -6,12 +6,9 @@ Este projeto foi desenvolvido durante o curso **"Backend Master Class [Golang + 
 
 - **[Golang](https://golang.org/)**: Linguagem principal para o desenvolvimento da API.
 - **[Gin](https://github.com/gin-gonic/gin)**: Framework para construção da API em Go.
-- **[gRPC](https://grpc.io/)**: Comunicação eficiente entre microserviços.
 - **[PostgreSQL](https://www.postgresql.org/)**: Banco de dados relacional.
 - **[JWT](https://github.com/golang-jwt/jwt)** e **[Paseto](https://github.com/o1egl/paseto)**: Autenticação segura.
-- **[Redis](https://github.com/redis/redis)**: Armazenamento em cache.
 - **[Docker](https://www.docker.com/)**: Containerização da aplicação.
-- **[Kubernetes](https://kubernetes.io/)**: Orquestração de containers.
 - **[AWS EC2](https://aws.amazon.com/ec2/)** e **[RDS](https://aws.amazon.com/rds/)**: Infraestrutura para deploy.
 - **[GitHub Actions](https://github.com/features/actions)**: para automação do fluxo de CI/CD (build e deploy).
 
